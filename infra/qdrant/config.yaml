@@ -1,0 +1,38 @@
+# Qdrant Configuration for Impact Analysis Tool
+
+service:
+  host: 0.0.0.0
+  http_port: 6333
+  grpc_port: 6334
+
+storage:
+  # Use disk storage for persistence
+  storage_path: /qdrant/storage
+  
+  # Performance settings
+  wal_capacity_mb: 32
+  wal_segments_ahead: 0
+  
+  # Snapshot settings
+  snapshots_path: /qdrant/snapshots
+  temp_path: /qdrant/temp
+
+cluster:
+  enabled: false
+
+log_level: INFO
+
+# Collection settings
+defaults:
+  # Vector size for OpenAI embeddings
+  vector_size: 1536
+  
+  # Distance metric
+  distance: Cosine
+  
+  # Index settings
+  index:
+    type: HNSW
+    m: 16
+    ef_construct: 100
+    full_scan_threshold: 10000
